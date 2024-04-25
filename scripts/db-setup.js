@@ -1,3 +1,5 @@
+require('dotenv').config({path: ['.env', 'defaults.env']});
+
 const db = require('../lib/db');
 
 async function main() {

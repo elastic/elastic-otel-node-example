@@ -31,7 +31,10 @@ curl http://127.0.0.1:3000/ -X POST -d shortname=el -d url=https://elastic.co
 ```
 
 Then open <http://127.0.0.1:3000/el> in your browser.
-That is mostly it. Definitely *barebones*.
+
+That is mostly it.  When you are done, run `npm run db:stop` to stop the
+PostgreSQL container. The data is not persisted.
+Definitely *barebones*.
 
 
 ## Observability with `@elastic/opentelemetry-node`
