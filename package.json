@@ -1,0 +1,35 @@
+{
+  "name": "elastic-otel-node-example",
+  "version": "1.0.0",
+  "description": "An example app demonstrating the use of @elastic/opentelemetry-node",
+  "license": "Apache-2.0",
+  "private": true,
+  "author": "Elastic Observability <https://www.elastic.co/observability>",
+  "keywords": [
+    "elastic",
+    "opentelemetry",
+    "observability",
+    "example",
+    "demo"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "db:start": "docker compose -f ./docker-compose.yaml up -d",
+    "db:setup": "node --env-file=./local.env ./scripts/db-setup.js",
+    "db:stop": "docker compose -f ./docker-compose.yaml down",
+    "psql": "PGHOST=localhost PGUSER=elastic_otel_node_example psql",
+    "start": "node --env-file=./local.env -r @elastic/opentelemetry-node lib/app.js",
+    "watch": "node --watch --env-file=./local.env -r @elastic/opentelemetry-node lib/app.js"
+  },
+  "// engines": "min Node.js v20 for the convenience of using '--env-file' opt",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@elastic/opentelemetry-node": "file:../elastic-otel-node/packages/opentelemetry-node",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "express-promise-router": "^4.1.1",
+    "pg": "^8.11.5"
+  }
+}
