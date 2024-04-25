@@ -12,19 +12,18 @@ HTTP server.
 
 ## Usage
 
-This assumes you have Docker installed.
+Download and start the service (this assumes you have Docker installed):
 
 ```
 git clone https://github.com/elastic/elastic-otel-node-example.git
 cd elastic-otel-node-example
 npm install
 
-npm run db:start   # start Postgres in Docker
-npm run db:setup   # create the DB "shortlinks" table
+npm run db:start   # start Postgres in Docker and setup table(s)
 npm start          # start the service at http://127.0.0.1:3000/
 ```
 
-The try it out, first add a shortlink:
+To try it out, first add a shortlink:
 
 ```
 curl http://127.0.0.1:3000/ -X POST -d shortname=el -d url=https://elastic.co
@@ -33,7 +32,7 @@ curl http://127.0.0.1:3000/ -X POST -d shortname=el -d url=https://elastic.co
 Then open <http://127.0.0.1:3000/el> in your browser.
 
 That is mostly it.  When you are done, run `npm run db:stop` to stop the
-PostgreSQL container. The data is not persisted.
+PostgreSQL container. The link data is not persisted outside of the container.
 Definitely *barebones*.
 
 

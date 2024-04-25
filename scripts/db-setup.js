@@ -3,6 +3,7 @@ require('dotenv').config({path: ['.env', 'defaults.env']});
 const db = require('../lib/db');
 
 async function main() {
+    console.log('db-setup.js: setting up shortlinks table')
     // await db.query('DROP TABLE IF EXISTS shortlinks');
     const createSchema = `
         CREATE TABLE IF NOT EXISTS shortlinks(

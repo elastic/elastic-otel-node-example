@@ -8,7 +8,6 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_HOST_AUTH_METHOD: 'trust'
-      POSTGRES_USER: 'elastic_otel_node_example'
     healthcheck:
       test: ["CMD", "pg_isready"]
       interval: 1s

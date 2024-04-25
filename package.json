@@ -14,9 +14,9 @@
   ],
   "main": "index.js",
   "scripts": {
-    "db:start": "docker compose -f ./docker-compose.yaml up -d && node ./scripts/db-setup.js",
+    "db:start": "docker compose -f ./docker-compose.yaml up -d --wait && node ./scripts/db-setup.js",
     "db:stop": "docker compose -f ./docker-compose.yaml down",
-    "psql": "PGHOST=localhost PGUSER=elastic_otel_node_example psql",
+    "psql": "PGHOST=localhost PGUSER=postgres psql",
     "start": "node -r @elastic/opentelemetry-node lib/app.js",
     "watch": "node --watch -r @elastic/opentelemetry-node lib/app.js"
   },
