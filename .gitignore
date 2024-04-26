@@ -1,4 +1,6 @@
+/config.env
 /.env
+.DS_Store
 /tmp
 /node_modules
 /NOTES.md

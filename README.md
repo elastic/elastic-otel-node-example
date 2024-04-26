@@ -13,6 +13,10 @@ HTTP server.
 
 ## Usage
 
+As prerequisites, this demo assumes you have Docker installed and are running
+Node.js v20 or later. (This uses Node.js v20 for the convenience of its
+`--env-file` option.)
+
 Download and start the service (this assumes you have Docker installed):
 
 ```sh
@@ -20,11 +24,11 @@ git clone https://github.com/elastic/elastic-otel-node-example.git
 cd elastic-otel-node-example
 npm install
 
-cp .env.template .env
-vim .env            # See section below for configuring this file.
+cp config.env.template config.env
+vim config.env      # Edit this file as appropriate (see section below)
 
-npm run db:start    # start Postgres in Docker and setup table(s)
-npm start           # start the service at http://127.0.0.1:3000/
+npm run db:start    # Start Postgres in Docker and setup table(s)
+npm start           # Start the service at http://127.0.0.1:3000/
 ```
 
 To try it out, first add a shortlink:
@@ -47,17 +51,13 @@ observability of this app. The steps are:
 
 1. You'll need somewhere to send the gathered OpenTelemetry data, so it can be viewed and analyzed. The `@elastic/opentelemetry-node` package supports sending to any OTLP endpoint (e.g. an OpenTelemetry collector instance). Here we will show using an [Elastic Observability](https://www.elastic.co/observability) cloud deployment.
 
-    If you don't have an Elastic cloud deployment, you can [start a free trial](https://cloud.elastic.co/registration). After registering, click "Create deployment".  Once that is created you should visit your Kibana home page, `https://{DEPLOYMENT_NAME}.kb.{REGION}.cloud.es.io/app/home#/getting_started`.  For example:
-    `https://my-deployment.kb.us-west1.gcp.cloud.es.io/app/home#/getting_started`
+    If you don't have an Elastic cloud deployment, you can [start a free trial](https://cloud.elastic.co/registration). After registering, click "Create deployment".  Once that is created you should visit your Kibana home page, `https://{DEPLOYMENT_NAME}.kb.{REGION}.cloud.es.io/app/home#/getting_started`.  For example: `https://my-deployment.kb.us-west1.gcp.cloud.es.io/app/home#/getting_started`
 
-    To configure `@elastic/opentelemetry-node` you'll need the deployment's
-    OTLP endpoint and authorization header to set the appropriate `OTLP_*`
-    environment variables. You can find these in Kibana's APM tutorial.
+    To configure `@elastic/opentelemetry-node` you'll need the deployment's OTLP endpoint and authorization header to set the appropriate `OTLP_*` environment variables. You can find these in Kibana's APM tutorial.
 
     ![Kibana's APM tutorial showing OTel settings](./docs/img/otlp-endpoint-settings.png)
 
-    To configure the Shortlinks service, copy the ".env.template" file to ".env"
-    and fill in the values for your Elastic cloud deployment. For example:
+    To configure the Shortlinks service, copy the "config.env.template" file to "config.env" and fill in the values for your Elastic cloud deployment. For example:
 
     ```
     OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.apm.us-west1.gcp.cloud.es.io
