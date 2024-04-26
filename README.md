@@ -2,13 +2,18 @@
 
 This repository holds a small Node.js app to demonstrate usage of
 [`@elastic/opentelemetry-node`](https://github.com/elastic/elastic-otel-node/tree/main/packages/opentelemetry-node#readme)
-(the Elastic OpenTelemetry Distribution for Node.js) in instrumenting Node.js
-apps for observability.
+(the Elastic OpenTelemetry Distribution for Node.js, the "distro") in
+instrumenting Node.js apps for observability.
 
 The app is a barebones shortlinks service (add a URL with a shortname, then
 use the service to redirect to that URL). This implementation uses PostgreSQL
 to store shortlinks (using the `pg` client package), and `express` for the
 HTTP server.
+
+The Elastic OpenTelemetry Distribution for Node.js is light wrapper around the
+core [OpenTelemetry JS SDK](https://opentelemetry.io/docs/languages/js/). It
+provides for convenient usage of the SDK for Node.js. It works with any
+downstream OpenTelemetry-compatible collector.
 
 
 ## Usage
@@ -80,6 +85,22 @@ observability of this app. The steps are:
     ```
 
 If all has gone well, then after some usage of the service, you will see
-telemetry data for the shortlinks app in the "APM" section of Kibana.
+telemetry data for the shortlinks service in the "APM" section of Kibana.
 
+For example, the "Transactions" section of "shortlinks" service overview page
+shows the top routes of the service:
+
+!["shortlinks" service transactions](./docs/img/shortlinks-transactions.png)
+
+A trace of `GET /:shortname` shows Express middleware and PostgresSQL client
+handling for that endpoint:
+
+!["shortlinks" trace](./docs/img/shortlinks-trace.png)
+
+
+## What next?
+
+See [the Elastic OpenTelemetry Distribution for Node.js project](https://github.com/elastic/elastic-otel-node/tree/main/packages/opentelemetry-node/#readme) for more details on the distro.
+
+See [the Elastic APM guide](https://www.elastic.co/guide/en/observability/current/apm.html) for features of Elastic Observability.
 
