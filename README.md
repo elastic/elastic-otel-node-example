@@ -60,24 +60,26 @@ observability of this app. The steps are:
     To configure the Shortlinks service, copy the "config.env.template" file to "config.env" and fill in the values for your Elastic cloud deployment. For example:
 
     ```
+    ...
+
     OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.apm.us-west1.gcp.cloud.es.io
     OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer P....I"
     OTEL_SERVICE_NAME=shortlinks
     ```
 
-2. Install the Elastic OpenTelemetry Node.js distro as a dependency:
+2. Install the Elastic OpenTelemetry Node.js distro as a dependency. This is already done in "package.json".
 
     ```sh
     npm install --save @elastic/opentelemetry-node
     ```
 
-3. Use the Node.js [`-r, --require` option](https://nodejs.org/api/all.html#all_cli_-r---require-module) to load and start the distro:
+3. Use the Node.js [`-r, --require` option](https://nodejs.org/api/all.html#all_cli_-r---require-module) to load and start the distro. This is already setup in the `npm start` script in "package.json".
 
     ```sh
-    node -r @elastic/opentelemetry-node lib/app.js
+    node --env-file ./config.env -r @elastic/opentelemetry-node lib/app.js
     ```
 
-If all has gone well, then after some usage, you will see telemetry data for
-the shortlinks app in the "APM" section of Kibana.
+If all has gone well, then after some usage of the service, you will see
+telemetry data for the shortlinks app in the "APM" section of Kibana.
 
 
