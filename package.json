@@ -16,16 +16,16 @@
   "files": [
     "lib"
   ],
+  "// engines": "min Node.js v20 for the convenience of using '--env-file' opt",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "db:start": "docker compose -f ./docker-compose.yaml up -d --wait && node --env-file=./config.env ./scripts/db-setup.js",
     "db:stop": "docker compose -f ./docker-compose.yaml down",
     "psql": "PGHOST=localhost PGUSER=postgres psql",
-    "start": "node --env-file=./config.env -r @elastic/opentelemetry-node lib/app.js",
-    "watch": "node --watch --env-file=./config.env -r @elastic/opentelemetry-node lib/app.js"
-  },
-  "// engines": "min Node.js v20 for the convenience of using '--env-file' opt",
-  "engines": {
-    "node": ">=20"
+    "watch": "node --watch --env-file=./config.env -r @elastic/opentelemetry-node lib/app.js",
+    "start": "node --env-file=./config.env -r @elastic/opentelemetry-node lib/app.js"
   },
   "dependencies": {
     "@elastic/opentelemetry-node": "file:../elastic-otel-node/packages/opentelemetry-node",
