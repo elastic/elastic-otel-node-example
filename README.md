@@ -5,6 +5,8 @@ This repository holds a small Node.js service, called "Shortlinks", to demonstra
 (the Elastic OpenTelemetry Distribution for Node.js, the "distro") in
 instrumenting Node.js apps for observability.
 
+!["shortlinks" screenshot](./docs/img/shortlinks.png)
+
 The app is a barebones shortlinks service: add a URL with a shortname, then
 use the service to redirect to that URL. This implementation uses PostgreSQL
 to store shortlinks (using the `pg` client package), and `express` for the
