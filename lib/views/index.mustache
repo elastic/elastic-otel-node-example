@@ -7,7 +7,7 @@
 <style>
 body {
     padding: 5%;
-    line-height: 1.4em;
+    line-height: 1.6em;
 }
 label, input {
     font-size: 1em;
@@ -58,10 +58,12 @@ li {
 }
 a {
     text-decoration: none;
-    color: black;
 }
 a:hover {
     text-decoration: underline;
+}
+#recents a {
+    color: black;
 }
 input[type="submit"] {
     margin-top: 0.6em;
@@ -79,9 +81,10 @@ input[type="submit"] {
 <form id="create-form" action="/" method="post">
     <label for="shortname">{{baseUrl}}/</label><input id="shortname" name="shortname" type="text" placeholder="shortname" value="{{shortname}}" autofocus maxlength="128" size="10"/>
     →
-    <input name="url" type="url" placeholder="https://some-url" value="{{url}}" size="50"/><br/>
+    <input name="url" type="url" placeholder="https://some-url" value="{{url}}" size="40"/><br/>
     <input type="submit" value="Create" class="original-button"/>
 </form>
+<small><a href="https://github.com/elastic/elastic-otel-node-example#readme">About</a></small>
 
 {{#errMsg}}
 <div id="error-container">
