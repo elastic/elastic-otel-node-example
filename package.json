@@ -24,8 +24,8 @@
     "db:start": "docker compose -f ./docker-compose.yaml up -d --wait && node --env-file=./config.env ./scripts/db-setup.js",
     "db:stop": "docker compose -f ./docker-compose.yaml down",
     "psql": "PGHOST=localhost PGUSER=postgres psql",
-    "lint": "eslint --ext=js,mjs,cjs lib",
-    "lint:fix": "eslint --ext=js,mjs,cjs .eslintrc.js lib",
+    "lint": "eslint --ext=js,mjs,cjs .eslintrc.js lib",
+    "lint:fix": "eslint --fix --ext=js,mjs,cjs .eslintrc.js lib",
     "watch": "node --watch --env-file=./config.env -r @elastic/opentelemetry-node lib/app.js",
     "start": "node --env-file=./config.env -r @elastic/opentelemetry-node lib/app.js"
   },
