@@ -2,7 +2,7 @@
 
 This repository holds a small Node.js service, called "Shortlinks", to demonstrate usage of
 [`@elastic/opentelemetry-node`](https://github.com/elastic/elastic-otel-node/tree/main/packages/opentelemetry-node#readme)
-(the Elastic OpenTelemetry Distribution for Node.js, the "distro") in
+(the Elastic OpenTelemetry Distribution for Node.js) in
 instrumenting Node.js apps for observability.
 
 !["shortlinks" screenshot](./docs/img/shortlinks.png)
@@ -12,7 +12,7 @@ use the service to redirect to that URL. This implementation uses PostgreSQL
 to store shortlinks (using the `pg` client package), and `express` for the
 HTTP server.
 
-The Elastic OpenTelemetry Distribution for Node.js is light wrapper around the
+The Elastic OpenTelemetry Distribution for Node.js (the "Distro") is light wrapper around the
 core [OpenTelemetry JS SDK](https://opentelemetry.io/docs/languages/js/). It
 provides for convenient usage of the SDK for Node.js. It works with any
 downstream OpenTelemetry-compatible collector, of which an Elastic Observability
